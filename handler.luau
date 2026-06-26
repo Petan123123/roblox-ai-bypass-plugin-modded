@@ -98,7 +98,7 @@ success,loaded=pcall(function()
 		print("Bypass is loading from github repo - this might take some time if your internet connection is slow")
 		fetched={
 			bypass=buffer.fromstring(
-				game:GetService("HttpService"):RequestAsync({Url="https://github.com/loadstring1/roblox-ai-bypass-plugin/raw/refs/heads/main/bypasses.rbxm",Method="GET"}).Body
+				game:GetService("HttpService"):RequestAsync({Url="https://github.com/Petan123132/roblox-ai-bypass-plugin-modded/raw/refs/heads/main/bypasses.rbxm",Method="GET"}).Body
 			)
 		}
 
