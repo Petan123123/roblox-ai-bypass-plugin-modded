@@ -165,20 +165,22 @@ for _,realBypass in aibypasses:GetChildren() do
 		for _,mod in selection:Get() do
 			if mod.ClassName~="ModuleScript" then continue end
 
-			local main=mainmodule:Clone()
-			local clonedBypass=realBypass:Clone()
-			local toparent=clonedBypass:QueryDescendants(".moduleParent")[1]
+			local main = mainmodule:Clone()
+			local clonedBypass = realBypass:Clone()
 
-			if toparent==nil then 
-				toparent=clonedBypass
+			local descendants = clonedBypass:GetDescendants()
+			local toparent
+
+			if #descendants > 0 then
+				toparent = descendants[#descendants]
 			else
-				toparent:RemoveTag("moduleParent")
+				toparent = clonedBypass
 			end
 
-			clonedBypass.Parent=main
-			mod:Clone().Parent=toparent
-			main.Parent=bypassFolderRefit()
-			table.insert(toSet,main)
+			clonedBypass.Parent = main
+			mod:Clone().Parent = toparent
+			main.Parent = bypassFolderRefit()
+			table.insert(toSet, main)
 
 			print("Successfully bypassed",mod.Name)
 		end
